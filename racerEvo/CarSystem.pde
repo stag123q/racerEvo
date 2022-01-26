@@ -59,11 +59,7 @@ class CarSystem {
     }
     
     for (int i = 0; i < CarControllerList.length; i++) {
-<<<<<<< Updated upstream
-      totalFitness += CarControllerList[i].fitness;
-=======
       CarControllerList[i].Fitness(totalWhiteCol, totalLaptime);
->>>>>>> Stashed changes
     }
     
     for (int i = 0; i < CarControllerList.length; i++) {
@@ -81,28 +77,18 @@ class CarSystem {
         matingPool.add(CarControllerList[i]);
       }
     }
-<<<<<<< Updated upstream
-    for (int i = 0; i < CarControllerList.length; i++) {
-      int a = int(random(matingPool.size()));
-=======
   }
   
-  void crossOver() {
-        for (int i = 0; i < CarControllerList.length; i++) {
-      /*int a = int(random(matingPool.size()));
->>>>>>> Stashed changes
-      int b = int(random(matingPool.size()));
-      CarController partnerA = matingPool.get(a);
-      CarController partnerB = matingPool.get(b);
-      CarController child = partnerA.Crossover(partnerB);
-      child.Mutate(mutationRate);
+  //void crossOver() {
+  //      for (int i = 0; i < CarControllerList.length; i++) {
+  //    int a = int(random(matingPool.size()));
+  //    int b = int(random(matingPool.size()));
+  //    CarController partnerA = matingPool.get(a);
+  //    CarController partnerB = matingPool.get(b);
+  //    CarController child = partnerA.Crossover(partnerB);
+  //    child.Mutate(mutationRate);
 
-      CarControllerList[i] = child;
-    }
-<<<<<<< Updated upstream
-
-    totalFitness = 0;
-=======
->>>>>>> Stashed changes
-  }
+  //    CarControllerList[i] = child;
+  //  }
+  //}
 }
