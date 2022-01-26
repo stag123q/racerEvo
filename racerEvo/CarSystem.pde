@@ -58,7 +58,6 @@ class CarSystem {
       CarControllerList[i] = child;*/
     }
 
-    //print("Pris: " + maxP, ", vægt: " + maxW, " || ");
     totalFitness = 0;
   }
 }
