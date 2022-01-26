@@ -8,15 +8,16 @@ CarSystem carSystem       = new CarSystem(populationSize);
 PImage    trackImage;
 
 void setup() {
-  size(500, 600);
+  size(1920, 1080);
   trackImage = loadImage("track.png");
 }
 
 void draw() {
   clear();
-  fill(255);
-  rect(0, 50, 1000, 1000);
-  image(trackImage, 0, 80);  
+  //fill(255);
+  //rect(0,50,1000,1000);
+  background(255);
+  image(trackImage,0,80, 982, 878);  
 
   carSystem.updateAndDisplay();
   //Vi kan tilføje så den først opdaterer når brugeren vælger eller efter 20 sek eller noget
