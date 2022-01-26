@@ -48,14 +48,14 @@ class CarSystem {
       }
     }
     for (int i = 0; i < CarControllerList.length; i++) {
-      int a = int(random(matingPool.size()));
+      /*int a = int(random(matingPool.size()));
       int b = int(random(matingPool.size()));
       CarController partnerA = matingPool.get(a);
       CarController partnerB = matingPool.get(b);
       CarController child = partnerA.Crossover(partnerB);
       child.Mutate(mutationRate);
 
-      CarControllerList[i] = child;
+      CarControllerList[i] = child;*/
     }
 
     //print("Pris: " + maxP, ", vægt: " + maxW, " || ");
