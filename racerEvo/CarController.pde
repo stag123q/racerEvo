@@ -40,7 +40,8 @@ class CarController {
 
     //normalizes collisions with white
     
-    normWhiteCol = sensorSystem.whiteSensorFrameCount/totalWhiteCol;
+    if(totalWhiteCol != 0) normWhiteCol = sensorSystem.whiteSensorFrameCount/totalWhiteCol;
+    else totalWhiteCol = sensorSystem.whiteSensorFrameCount;
 
 
     //gets points from collisions with white
