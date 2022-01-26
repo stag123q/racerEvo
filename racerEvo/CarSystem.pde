@@ -6,7 +6,7 @@ class CarSystem {
   CarController[] CarControllerList;
   ArrayList<CarController> matingPool;
 
-  int totalFitness, n;
+  int totalFitness, n, totalWhiteCol = 0, totalLaptime = 0;
   float mutationRate = 0.05;
 
   //Laver generationen af car controlers
@@ -30,16 +30,50 @@ class CarSystem {
   }
 
   void updateGA() {
-    for (int i = 0; i < CarControllerList.length; i++) {
-      CarControllerList[i].Fitness();
+    
+    //Calculates fitness and gets totalFitness
+    calcFitness();
+
+    //Creates mating pool
+    createMatingPool();
+    
+    //Crossover
+    crossOver();
+
+    //print("Pris: " + maxP, ", vægt: " + maxW, " || ");
+  }
+  
+  void calcFitness() {
+    totalFitness = 0;
+    totalWhiteCol = 0;
+    totalLaptime = 0;
+    
+    for (int i = 0; i < carSystem.CarControllerList.length; i++) {
+      totalWhiteCol = carSystem.CarControllerList[i].sensorSystem.whiteSensorFrameCount + totalWhiteCol;
     }
-
-    ArrayList<CarController> matingPool = new ArrayList<CarController>();
-
+    
+    for (int i = 0; i < carSystem.CarControllerList.length; i++) {
+      if (carSystem.CarControllerList[i].sensorSystem.roundComplete == true) {
+        totalLaptime = carSystem.CarControllerList[i].sensorSystem.lapTimeInFrames + totalLaptime;
+      }
+    }
+    
     for (int i = 0; i < CarControllerList.length; i++) {
+<<<<<<< Updated upstream
       totalFitness += CarControllerList[i].fitness;
+=======
+      CarControllerList[i].Fitness(totalWhiteCol, totalLaptime);
+>>>>>>> Stashed changes
     }
-
+    
+    for (int i = 0; i < CarControllerList.length; i++) {
+      totalFitness = CarControllerList[i].fitness + totalFitness;
+    }
+  }
+  
+  void createMatingPool() {
+    ArrayList<CarController> matingPool = new ArrayList<CarController>();
+    
     //Tilføj hver carcontroller til matingpoolen baseret på fitness
     for (int i = 0; i < CarControllerList.length; i++) {
       int n = int(CarControllerList[i].fitness/totalFitness*100);
@@ -47,8 +81,16 @@ class CarSystem {
         matingPool.add(CarControllerList[i]);
       }
     }
+<<<<<<< Updated upstream
     for (int i = 0; i < CarControllerList.length; i++) {
       int a = int(random(matingPool.size()));
+=======
+  }
+  
+  void crossOver() {
+        for (int i = 0; i < CarControllerList.length; i++) {
+      /*int a = int(random(matingPool.size()));
+>>>>>>> Stashed changes
       int b = int(random(matingPool.size()));
       CarController partnerA = matingPool.get(a);
       CarController partnerB = matingPool.get(b);
@@ -57,7 +99,10 @@ class CarSystem {
 
       CarControllerList[i] = child;
     }
+<<<<<<< Updated upstream
 
     totalFitness = 0;
+=======
+>>>>>>> Stashed changes
   }
 }

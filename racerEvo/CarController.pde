@@ -1,6 +1,11 @@
 class CarController {
   //Forbinder - Sensorer & Hjerne & Bil
+<<<<<<< Updated upstream
   float varians = 2, fitness; //hvor stor er variansen på de tilfældige vægte og bias
+=======
+  float varians = 2, normWhiteCol = 0, normLaptime = 0; //hvor stor er variansen på de tilfældige vægte og bias
+  int fitness = 0, whiteCol = 0, whiteColPoints = 0, laptimePoints = 0;
+>>>>>>> Stashed changes
   Car bil                    = new Car();
   NeuralNetwork hjerne       = new NeuralNetwork(varians); 
   SensorSystem  sensorSystem = new SensorSystem();
@@ -23,10 +28,44 @@ class CarController {
   void display() {
     bil.displayCar();
     sensorSystem.displaySensors();
+
+    println(sensorSystem.whiteSensorFrameCount);
   }
 
+<<<<<<< Updated upstream
   void Fitness() {
     fitness = random(10); //midlertidig
+=======
+  void Fitness(int totalLaptime, int totalWhiteCol) {
+
+    //resets fitness paramters
+    fitness = 0;
+    normWhiteCol = 0;
+    normLaptime = 0;
+    whiteCol = 0;
+    whiteColPoints = 0;
+    laptimePoints = 0;
+
+
+    //normalizes collisions with white
+    
+    normWhiteCol = sensorSystem.whiteSensorFrameCount/totalWhiteCol;
+
+
+    //gets points from collisions with white
+    whiteColPoints = int((5000*populationSize)/normWhiteCol);
+
+    //normalizes laptime
+    normLaptime = sensorSystem.lapTimeInFrames/totalLaptime;
+
+    //gets points from laptime
+    if (normLaptime != 0) {
+      laptimePoints = int((1000*populationSize)/normLaptime);
+    }
+
+    //assigns fitness from points
+    fitness = whiteColPoints + laptimePoints;
+>>>>>>> Stashed changes
   }
 
   CarController Crossover(CarController partner) {
@@ -54,6 +93,7 @@ class CarController {
   }
 
   void Mutate(float mutationRate) {
+<<<<<<< Updated upstream
     //Muterer weights
     for (int i = 0; i < hjerne.weights.length; i++) {
       if(random(1) < mutationRate){
@@ -67,5 +107,8 @@ class CarController {
       }
     }
     
+=======
+    //muter
+>>>>>>> Stashed changes
   }
 }
