@@ -24,8 +24,6 @@ class CarController {
   void display() {
     bil.displayCar();
     sensorSystem.displaySensors();
-
-    println(sensorSystem.whiteSensorFrameCount);
   }
 
 

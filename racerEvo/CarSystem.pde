@@ -79,7 +79,7 @@ class CarSystem {
     }
   }
   
-  //void crossOver() {
+  void crossOver() {
   //      for (int i = 0; i < CarControllerList.length; i++) {
   //    int a = int(random(matingPool.size()));
   //    int b = int(random(matingPool.size()));
@@ -90,5 +90,5 @@ class CarSystem {
 
   //    CarControllerList[i] = child;
   //  }
-  //}
+  }
 }
