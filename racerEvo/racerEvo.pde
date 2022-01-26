@@ -19,6 +19,8 @@ void draw() {
   image(trackImage,0,80);  
 
   carSystem.updateAndDisplay();
+  //Vi kan tilføje så den først opdaterer når brugeren vælger eller efter 20 sek eller noget
+  carSystem.updateGA();
   
   //TESTKODE: Frastortering af dårlige biler, for hver gang der går 200 frame - f.eks. dem der kører uden for banen
   /* if (frameCount%200==0) {

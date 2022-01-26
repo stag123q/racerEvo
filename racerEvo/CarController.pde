@@ -24,4 +24,18 @@ class CarController {
     bil.displayCar();
     sensorSystem.displaySensors();
   }
+  
+  void Fitness(){
+    //Beregn fitness
+  }
+  
+  CarController Crossover(CarController partner){
+    CarController child = new CarController();
+    //lav crossover
+    return child;
+  }
+  
+  void Mutate(float mutationRate){
+    //muter
+  }
 }
