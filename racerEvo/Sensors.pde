@@ -2,7 +2,7 @@ class SensorSystem {
   //SensorSystem - alle bilens sensorer - ogå dem der ikke bruges af "hjernen"
   
   //wall detectors
-  float sensorMag = 50;
+  float sensorMag = 70;
   float sensorAngle = PI*2/8;
   
   PVector anchorPos           = new PVector();
