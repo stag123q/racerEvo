@@ -21,17 +21,23 @@ void draw() {
 
   carSystem.updateAndDisplay();
   //Vi kan tilføje så den først opdaterer når brugeren vælger eller efter 20 sek eller noget
-  carSystem.updateGA();
-  
+
   //TESTKODE: Frastortering af dårlige biler, for hver gang der går 200 frame - f.eks. dem der kører uden for banen
   /* if (frameCount%200==0) {
-      println("FJERN DEM DER KØRER UDENFOR BANEN frameCount: " + frameCount);
-      for (int i = carSystem.CarControllerList.size()-1 ; i >= 0;  i--) {
-        SensorSystem s = carSystem.CarControllerList.get(i).sensorSystem;
-        if(s.whiteSensorFrameCount > 0){
-          carSystem.CarControllerList.remove(carSystem.CarControllerList.get(i));
-         }
-      }
-    }*/
-    //
+   println("FJERN DEM DER KØRER UDENFOR BANEN frameCount: " + frameCount);
+   for (int i = carSystem.CarControllerList.size()-1 ; i >= 0;  i--) {
+   SensorSystem s = carSystem.CarControllerList.get(i).sensorSystem;
+   if(s.whiteSensorFrameCount > 0){
+   carSystem.CarControllerList.remove(carSystem.CarControllerList.get(i));
+   }
+   }
+   }*/
+  //
+}
+
+void keyPressed() {
+  //Hvis n trykkes, generationen øges med 1
+  if (keyCode == 32) {
+    carSystem.updateGA();
+  }
 }

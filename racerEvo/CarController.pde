@@ -1,10 +1,10 @@
 class CarController {
   //Forbinder - Sensorer & Hjerne & Bil
-  float varians             = 2; //hvor stor er variansen på de tilfældige vægte og bias
+  float varians = 2, fitness; //hvor stor er variansen på de tilfældige vægte og bias
   Car bil                    = new Car();
   NeuralNetwork hjerne       = new NeuralNetwork(varians); 
   SensorSystem  sensorSystem = new SensorSystem();
-      
+
   void update() {
     //1.)opdtarer bil 
     bil.update();
@@ -19,23 +19,53 @@ class CarController {
     //4.)bilen drejes
     bil.turnCar(turnAngle);
   }
-  
-  void display(){
+
+  void display() {
     bil.displayCar();
     sensorSystem.displaySensors();
   }
-  
-  void Fitness(){
-    //Beregn fitness
+
+  void Fitness() {
+    fitness = random(10); //midlertidig
   }
-  
-  CarController Crossover(CarController partner){
+
+  CarController Crossover(CarController partner) {
     CarController child = new CarController();
-    //lav crossover
+
+    //Laver en crossover mellem weights
+    for (int i = 0; i < hjerne.weights.length; i++) {
+      float a = hjerne.weights[i];
+      float b = partner.hjerne.weights[i];
+
+      if (a < b) child.hjerne.weights[i] = random(a, b);
+      if (a > b) child.hjerne.weights[i] = random(b, a);
+      else child.hjerne.weights[i] = a;
+    }
+    //Laver en crossover mellem biases
+    for (int i = 0; i < hjerne.biases.length; i++) {
+      float a = hjerne.biases[i];
+      float b = partner.hjerne.biases[i];
+
+      if (a < b) child.hjerne.biases[i] = random(a, b);
+      if (a > b) child.hjerne.biases[i] = random(b, a);
+      else child.hjerne.weights[i] = a;
+    }
     return child;
   }
-  
-  void Mutate(float mutationRate){
-    //muter
+
+  void Mutate(float mutationRate) {
+    //Muterer weights
+    for (int i = 0; i < hjerne.weights.length; i++) {
+      if(random(1) < mutationRate){
+        hjerne.weights[i] = int(random(-varians, varians));
+      }
+    }
+    //Muter biases
+        for (int i = 0; i < hjerne.biases.length; i++) {
+      if(random(1) < mutationRate){
+        hjerne.biases[i] = int(random(-varians, varians));
+      }
+    }
+    
   }
 }
