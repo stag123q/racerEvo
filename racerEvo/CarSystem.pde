@@ -39,36 +39,15 @@ class CarSystem {
 
     //Crossover
     crossOver();
-<<<<<<< Updated upstream
-=======
     
     generation++;
-
-    //print("Pris: " + maxP, ", vægt: " + maxW, " || ");
->>>>>>> Stashed changes
   }
 
   void calcFitness() {
-<<<<<<< Updated upstream
-    totalFitness = 0;
-    totalWhiteCol = 0;
-    totalLaptime = 0;
 
-    for (int i = 0; i < carSystem.CarControllerList.length; i++) {
-      totalWhiteCol = carSystem.CarControllerList[i].sensorSystem.whiteSensorFrameCount + totalWhiteCol;
-    }
-
-    for (int i = 0; i < carSystem.CarControllerList.length; i++) {
-      if (carSystem.CarControllerList[i].sensorSystem.roundComplete == true) {
-        totalLaptime = carSystem.CarControllerList[i].sensorSystem.lapTimeInFrames + totalLaptime;
-      }
-    }
-
-=======
     highestFit = 0;
     
     //calcs all fitness scores. Also gets highest fitness
->>>>>>> Stashed changes
     for (int i = 0; i < CarControllerList.length; i++) {
       CarControllerList[i].Fitness();
       
@@ -76,12 +55,8 @@ class CarSystem {
         highestFit = CarControllerList[i].fitness;
       }
     }
-<<<<<<< Updated upstream
-
-=======
     
     //sums fitness scores into totalFitness
->>>>>>> Stashed changes
     for (int i = 0; i < CarControllerList.length; i++) {
       totalFitness = CarControllerList[i].fitness + totalFitness;
     }
