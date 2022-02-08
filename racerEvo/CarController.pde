@@ -27,35 +27,11 @@ class CarController {
   }
 
 
-  void Fitness(int totalLaptime, int totalWhiteCol) {
+  void Fitness() {
 
-    //resets fitness paramters
-    fitness = 0;
-    normWhiteCol = 0;
-    normLaptime = 0;
-    whiteCol = 0;
-    whiteColPoints = 0;
-    laptimePoints = 0;
-
-
-    //normalizes collisions with white
+    fitness = int(sensorSystem.clockWiseRotationFrameCounter);
     
-    normWhiteCol = sensorSystem.whiteSensorFrameCount/totalWhiteCol;
-
-
-    //gets points from collisions with white
-    whiteColPoints = int((5000*populationSize)/normWhiteCol);
-
-    //normalizes laptime
-    normLaptime = sensorSystem.lapTimeInFrames/totalLaptime;
-
-    //gets points from laptime
-    if (normLaptime != 0) {
-      laptimePoints = int((1000*populationSize)/normLaptime);
-    }
-
-    //assigns fitness from points
-    fitness = whiteColPoints + laptimePoints;
+    if (fitness < 0) fitness = 0;
   }
 
   CarController Crossover(CarController partner) {
