@@ -30,7 +30,7 @@ class CarController {
   void Fitness() {
 
     fitness = int(sensorSystem.clockWiseRotationFrameCounter);
-    
+
     if (fitness < 0) fitness = 0;
   }
 
