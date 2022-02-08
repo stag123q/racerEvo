@@ -6,7 +6,8 @@ class CarSystem {
   CarController[] CarControllerList;
   ArrayList<CarController> matingPool;
 
-  int totalFitness, n, generation = 0, highestFit = 0;
+  int totalFitness, ratio, generation = 0, highestFit = 0;
+
   float mutationRate = 0.05;
 
   //Laver generationen af car controlers
@@ -34,11 +35,8 @@ class CarSystem {
     //Calculates fitness and gets totalFitness
     calcFitness();
 
-    //Creates mating pool
-    createMatingPool();
-
     //Crossover
-    crossOver();
+
     
     generation++;
   }
@@ -48,6 +46,7 @@ class CarSystem {
     highestFit = 0;
     
     //calcs all fitness scores. Also gets highest fitness
+
     for (int i = 0; i < CarControllerList.length; i++) {
       CarControllerList[i].Fitness();
       
@@ -55,30 +54,42 @@ class CarSystem {
         highestFit = CarControllerList[i].fitness;
       }
     }
+
     
     //sums fitness scores into totalFitness
+
     for (int i = 0; i < CarControllerList.length; i++) {
       totalFitness = CarControllerList[i].fitness + totalFitness;
     }
   }
 
-  void createMatingPool() {
+  void crossOver() {
+    //Laver først matingpool
     ArrayList<CarController> matingPool = new ArrayList<CarController>();
+
+    //Sætter en ratio der giver det rigtige størrelsesforhold at gange på fitnessen for at få en matingpool der ikke er for stor/lille
+    int tfLength = str(totalFitness).length();
+    String ratioSTR = "1";
+
+    for (int i = 0; i < tfLength; i++) {
+      ratioSTR = ratioSTR + 0;
+    }
+
+    ratio = int(ratioSTR);
+
 
     //Tilføjer hver carcontroller til matingpoolen baseret på fitness
     for (int i = 0; i < CarControllerList.length; i++) {
-      int n = int(CarControllerList[i].fitness/totalFitness*1000);
+      int n = CarControllerList[i].fitness*(ratio/totalFitness);
       for (int j = 0; j < n; j++) {
         matingPool.add(CarControllerList[i]);
       }
     }
-    
-  }
 
-  void crossOver() {
     for (int i = 0; i < CarControllerList.length; i++) {
-      int a = int(random(matingPool.size()));
-      int b = int(random(matingPool.size()));
+      int ms = matingPool.size();
+      int a = int(random(ms));
+      int b = int(random(ms));
       CarController partnerA = matingPool.get(int(a));
       CarController partnerB = matingPool.get(int(b));
       CarController child = partnerA.Crossover(partnerB);
@@ -86,7 +97,7 @@ class CarSystem {
 
       CarControllerList[i] = child;
     }
-    
+
     totalFitness = 0;
   }
   
