@@ -30,7 +30,9 @@ class CarSystem {
 
     //2.) Tegner tilsidst - så sensorer kun ser banen og ikke andre biler!
     for (CarController controller : CarControllerList) {
-      controller.display();
+      if (controller.out && crashedCarView) {
+        controller.display();
+      } else if (!controller.out) controller.display();
     }
 
 
