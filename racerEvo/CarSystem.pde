@@ -6,7 +6,7 @@ class CarSystem {
   CarController[] CarControllerList;
   ArrayList<CarController> matingPool;
 
-  int totalFitness, n, totalWhiteCol = 0, totalLaptime = 0;
+  int totalFitness, n, generation = 0, highestFit = 0;
   float mutationRate = 0.05;
 
   //Laver generationen af car controlers
@@ -39,9 +39,17 @@ class CarSystem {
 
     //Crossover
     crossOver();
+<<<<<<< Updated upstream
+=======
+    
+    generation++;
+
+    //print("Pris: " + maxP, ", vægt: " + maxW, " || ");
+>>>>>>> Stashed changes
   }
 
   void calcFitness() {
+<<<<<<< Updated upstream
     totalFitness = 0;
     totalWhiteCol = 0;
     totalLaptime = 0;
@@ -56,10 +64,24 @@ class CarSystem {
       }
     }
 
+=======
+    highestFit = 0;
+    
+    //calcs all fitness scores. Also gets highest fitness
+>>>>>>> Stashed changes
     for (int i = 0; i < CarControllerList.length; i++) {
       CarControllerList[i].Fitness();
+      
+      if (CarControllerList[i].fitness > highestFit) {
+        highestFit = CarControllerList[i].fitness;
+      }
     }
+<<<<<<< Updated upstream
 
+=======
+    
+    //sums fitness scores into totalFitness
+>>>>>>> Stashed changes
     for (int i = 0; i < CarControllerList.length; i++) {
       totalFitness = CarControllerList[i].fitness + totalFitness;
     }
@@ -91,5 +113,15 @@ class CarSystem {
     }
     
     totalFitness = 0;
+  }
+  
+  void restart () {
+    generation = 0;
+    
+    CarControllerList = new CarController[populationSize];
+    for (int i = 0; i < populationSize; i++) { 
+      CarControllerList[i] = new CarController();
+    }
+    
   }
 }
