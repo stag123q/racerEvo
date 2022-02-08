@@ -1,5 +1,5 @@
 //populationSize: Hvor mange "controllere" der genereres, controller = bil & hjerne & sensorer
-int       populationSize  = 100, genLength = 15, t = 15, ms = millis();     
+int       populationSize  = 100, genLength = 15, t = 15;     
 
 Boolean autoUpdate = false;
 

@@ -78,6 +78,7 @@ class CarSystem {
     for (int i = 0; i < CarControllerList.length; i++) {
       totalFitness = CarControllerList[i].fitness + totalFitness;
     }
+    
   }
 
   void crossOver() {
