@@ -1,7 +1,7 @@
 //populationSize: Hvor mange "controllere" der genereres, controller = bil & hjerne & sensorer
-int       populationSize  = 50, genLength = 15;     
+int       populationSize  = 100, genLength = 15, t = 15, ms = millis();     
 
-Boolean autoUpdate = true;
+Boolean autoUpdate = false;
 
 //CarSystem: Indholder en population af "controllere" 
 CarSystem carSystem       = new CarSystem(populationSize);
@@ -47,16 +47,18 @@ void drawUI(){
   text("Generations: "+carSystem.generation, 1300, 450);
   text("Mutation rate: "+carSystem.mutationRate*100+"%", 1300, 400);
   text("Highest fitness: "+carSystem.highestFit, 1300, 350);
-  text("SPACE to start new gen", 1300, 250);
-  text("BACKSPACE to restart", 1300, 200);
+  text("SPACE to start new gen", 1300, 275);
+  text("BACKSPACE to restart", 1300, 225);
+  text("Elapsed time: " +int(millis()/1000)+ " s", 1300, 150);
   
 
-  //rect(0,0,300,400);
+  //rect(0,0,400,500);
 
   text("U to enable automatic new gen", 1300, 50);
   
   if (autoUpdate) {
       text("Automatic generations: Every "+genLength+"s", 1300, 100);
+      
   } else {
     text("Automatic generations: Disabled", 1300, 100);
   }
@@ -64,7 +66,7 @@ void drawUI(){
 
 void keyReleased() {
   //Hvis n trykkes, generationen øges med 1
-  if (keyCode == 32) {
+  if (keyCode == 32 && !autoUpdate) {
     carSystem.updateGA();
     carSystem.m = 0;
   }

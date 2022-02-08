@@ -31,7 +31,7 @@ class CarController {
 
   void Fitness() {
     
-    if(sensorSystem.whiteSensorFrameCount > 0) fitness = int(((sensorSystem.clockWiseRotationFrameCounter/2)-50)*cornerStraf);
+    if(sensorSystem.whiteSensorFrameCount > 0) fitness = int((sensorSystem.clockWiseRotationFrameCounter/5)*cornerStraf);
     else fitness = int(sensorSystem.clockWiseRotationFrameCounter*cornerStraf);
     
     
