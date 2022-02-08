@@ -36,14 +36,13 @@ class CarSystem {
     calcFitness();
 
     //Crossover
-    crossOver();
-  
-    generation++;
 
+    
+    generation++;
   }
 
   void calcFitness() {
-    totalFitness = 0;
+
     highestFit = 0;
     
     //calcs all fitness scores. Also gets highest fitness
@@ -55,7 +54,8 @@ class CarSystem {
         highestFit = CarControllerList[i].fitness;
       }
     }
- 
+
+    
     //sums fitness scores into totalFitness
 
     for (int i = 0; i < CarControllerList.length; i++) {
