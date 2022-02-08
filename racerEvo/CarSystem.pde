@@ -6,7 +6,7 @@ class CarSystem {
   CarController[] CarControllerList;
   ArrayList<CarController> matingPool;
 
-  int totalFitness, n, totalWhiteCol = 0, totalLaptime = 0;
+  int totalFitness, ratio;
   float mutationRate = 0.05;
 
   //Laver generationen af car controlers
@@ -43,18 +43,6 @@ class CarSystem {
 
   void calcFitness() {
     totalFitness = 0;
-    totalWhiteCol = 0;
-    totalLaptime = 0;
-
-    for (int i = 0; i < carSystem.CarControllerList.length; i++) {
-      totalWhiteCol = carSystem.CarControllerList[i].sensorSystem.whiteSensorFrameCount + totalWhiteCol;
-    }
-
-    for (int i = 0; i < carSystem.CarControllerList.length; i++) {
-      if (carSystem.CarControllerList[i].sensorSystem.roundComplete == true) {
-        totalLaptime = carSystem.CarControllerList[i].sensorSystem.lapTimeInFrames + totalLaptime;
-      }
-    }
 
     for (int i = 0; i < CarControllerList.length; i++) {
       CarControllerList[i].Fitness();
@@ -67,15 +55,28 @@ class CarSystem {
 
   void createMatingPool() {
     ArrayList<CarController> matingPool = new ArrayList<CarController>();
+    
+    //Sætter en ratio der giver det rigtige størrelsesforhold at gange på fitnessen for at få en matingpool der ikke er for stor/lille
+    int tfLength = str(totalFitness).length();
+    String ratioSTR = "1";
+     
+    for(int i = 0; i < tfLength; i++){
+      ratioSTR = ratioSTR + 0;
+    }
+    
+    ratio = int(ratioSTR);
 
+    
     //Tilføjer hver carcontroller til matingpoolen baseret på fitness
     for (int i = 0; i < CarControllerList.length; i++) {
-      int n = int(CarControllerList[i].fitness/totalFitness*1000);
+      int n = CarControllerList[i].fitness*(ratio/totalFitness);
+      print(n, "||");
       for (int j = 0; j < n; j++) {
         matingPool.add(CarControllerList[i]);
       }
     }
-    
+
+    print("matingpools størrelse:", matingPool.size());
   }
 
   void crossOver() {
@@ -89,7 +90,7 @@ class CarSystem {
 
       CarControllerList[i] = child;
     }
-    
+
     totalFitness = 0;
   }
 }

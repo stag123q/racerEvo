@@ -1,7 +1,7 @@
 class CarController {
   //Forbinder - Sensorer & Hjerne & Bil
   float varians = 2, normWhiteCol = 0, normLaptime = 0; //hvor stor er variansen på de tilfældige vægte og bias
-  int fitness = 0, whiteCol = 0, whiteColPoints = 0, laptimePoints = 0;
+  int fitness, whiteCol = 0, whiteColPoints = 0, laptimePoints = 0;
   Car bil                    = new Car();
   NeuralNetwork hjerne       = new NeuralNetwork(varians); 
   SensorSystem  sensorSystem = new SensorSystem();
@@ -30,7 +30,6 @@ class CarController {
   void Fitness() {
 
     fitness = int(sensorSystem.clockWiseRotationFrameCounter);
-
     if (fitness < 0) fitness = 0;
   }
 
