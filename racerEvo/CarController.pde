@@ -1,7 +1,7 @@
 class CarController {
   //Forbinder - Sensorer & Hjerne & Bil
 
-  float varians = 2; //hvor stor er variansen på de tilfældige vægte og bias
+  float varians = 2, cornerStraf = 1; //hvor stor er variansen på de tilfældige vægte og bias
   int fitness = 0;
 
   Car bil                    = new Car();
@@ -31,8 +31,8 @@ class CarController {
 
   void Fitness() {
     
-    if(sensorSystem.whiteSensorFrameCount > 0) fitness = int((sensorSystem.clockWiseRotationFrameCounter/2)-50);
-    else fitness = int(sensorSystem.clockWiseRotationFrameCounter);
+    if(sensorSystem.whiteSensorFrameCount > 0) fitness = int(((sensorSystem.clockWiseRotationFrameCounter/2)-50)*cornerStraf);
+    else fitness = int(sensorSystem.clockWiseRotationFrameCounter*cornerStraf);
     
     
     if(fitness < 0) fitness = 0;

@@ -6,7 +6,9 @@ class CarSystem {
   CarController[] CarControllerList;
   ArrayList<CarController> matingPool;
 
-  int totalFitness, ratio, generation = 0, highestFit = 0, time;
+
+  int totalFitness, ratio, generation = 1, highestFit = 0, m = millis(), time;
+
 
   float mutationRate = 0.05;
 
@@ -31,6 +33,13 @@ class CarSystem {
       controller.display();
     }
 
+
+    if (m == 5000) {
+      for (int i = 0; i < CarControllerList.length; i++) {
+        if (CarControllerList[i].bil.pos.x < 300 && CarControllerList[i].bil.pos.x < 400) CarControllerList[i].cornerStraf = 0.1;
+       }
+      }
+
     if (millis() > time + 15000 && autoUpdate == true) {
       updateGA();
       time = millis();
@@ -38,7 +47,6 @@ class CarSystem {
   }
 
   void updateGA() {
-
     //Calculates fitness and gets totalFitness
     calcFitness();
 
