@@ -70,11 +70,12 @@ class CarSystem {
 
     //Tilføjer hver carcontroller til matingpoolen baseret på fitness
     for (int i = 0; i < CarControllerList.length; i++) {
-      int n = int(CarControllerList[i].fitness/totalFitness*100);
+      int n = int(CarControllerList[i].fitness/totalFitness*1000);
       for (int j = 0; j < n; j++) {
         matingPool.add(CarControllerList[i]);
       }
     }
+    
   }
 
   void crossOver() {
