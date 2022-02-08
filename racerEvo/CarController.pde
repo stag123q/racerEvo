@@ -30,9 +30,13 @@ class CarController {
 
 
   void Fitness() {
-
-    fitness = int(sensorSystem.clockWiseRotationFrameCounter);
-    if (fitness < 0) fitness = 0;
+    
+    if(sensorSystem.whiteSensorFrameCount > 0) fitness = int((sensorSystem.clockWiseRotationFrameCounter/2)-50);
+    else fitness = int(sensorSystem.clockWiseRotationFrameCounter);
+    
+    
+    if(fitness < 0) fitness = 0;
+    
   }
 
   CarController Crossover(CarController partner) {
