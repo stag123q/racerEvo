@@ -3,6 +3,7 @@ class CarController {
 
   float varians = 2, cornerStraf = 1; //hvor stor er variansen på de tilfældige vægte og bias
   int fitness = 0;
+  Boolean out = false;
 
   Car bil                    = new Car();
   NeuralNetwork hjerne       = new NeuralNetwork(varians); 
@@ -25,18 +26,18 @@ class CarController {
 
   void display() {
     bil.displayCar();
-    sensorSystem.displaySensors();
+
+    if (sensorView) sensorSystem.displaySensors();
   }
 
 
   void Fitness() {
-    
-    if(sensorSystem.whiteSensorFrameCount > 0) fitness = int(((sensorSystem.clockWiseRotationFrameCounter/2)-50)*cornerStraf);
+
+    if (sensorSystem.whiteSensorFrameCount > 0) fitness = int(((sensorSystem.clockWiseRotationFrameCounter/2)-50)*cornerStraf);
     else fitness = int(sensorSystem.clockWiseRotationFrameCounter*cornerStraf);
-    
-    
-    if(fitness < 0) fitness = 0;
-    
+
+
+    if (fitness < 0) fitness = 0;
   }
 
   CarController Crossover(CarController partner) {
@@ -66,13 +67,13 @@ class CarController {
   void Mutate(float mutationRate) {
     //Muterer weights
     for (int i = 0; i < hjerne.weights.length; i++) {
-      if(random(1) < mutationRate){
+      if (random(1) < mutationRate) {
         hjerne.weights[i] = int(random(-varians, varians));
       }
     }
     //Muter biases
-        for (int i = 0; i < hjerne.biases.length; i++) {
-      if(random(1) < mutationRate){
+    for (int i = 0; i < hjerne.biases.length; i++) {
+      if (random(1) < mutationRate) {
         hjerne.biases[i] = int(random(-varians, varians));
       }
     }

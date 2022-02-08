@@ -30,15 +30,17 @@ class CarSystem {
 
     //2.) Tegner tilsidst - så sensorer kun ser banen og ikke andre biler!
     for (CarController controller : CarControllerList) {
-      controller.display();
+      if (controller.out && crashedCarView) {
+        controller.display();
+      } else if (!controller.out) controller.display();
     }
 
 
     if (m == 5000) {
       for (int i = 0; i < CarControllerList.length; i++) {
         if (CarControllerList[i].bil.pos.x < 300 && CarControllerList[i].bil.pos.x < 400) CarControllerList[i].cornerStraf = 0.1;
-       }
       }
+    }
 
     if (millis() > time + 15000 && autoUpdate == true) {
       updateGA();
