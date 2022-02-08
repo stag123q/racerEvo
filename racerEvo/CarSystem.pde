@@ -6,7 +6,7 @@ class CarSystem {
   CarController[] CarControllerList;
   ArrayList<CarController> matingPool;
 
-  int totalFitness, ratio, generation = 0, highestFit = 0, m = millis();
+  int totalFitness, ratio, generation = 1, highestFit = 0, m = millis();
 
   float mutationRate = 0.05;
 
