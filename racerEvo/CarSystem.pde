@@ -36,7 +36,7 @@ class CarSystem {
     calcFitness();
 
     //Crossover
-
+    crossOver();
     
     generation++;
   }
