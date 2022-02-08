@@ -1,7 +1,8 @@
-//populationSize: Hvor mange "controllere" der genereres, controller = bil & hjerne & sensorer
+//populationSize: Hvor mange "controllere" der genereres, controller = bil & hjerne & sensore
 int       populationSize  = 500, genLength = 15;     
 
 Boolean autoUpdate = true, sensorView = false, crashedCarView = false;
+
 
 //CarSystem: Indholder en population af "controllere" 
 CarSystem carSystem       = new CarSystem(populationSize);
@@ -57,6 +58,7 @@ void draw() {
       text("Highest fitness: "+carSystem.highestFit, 1300, 350);
       text("SPACE to start new gen", 1300, 250);
       text("BACKSPACE to restart", 1300, 200);
+      text("Elapsed time: " +int(millis()/1000)+ " s", 1300, 150);
 
 
       //rect(0,0,300,400);
@@ -89,3 +91,4 @@ void draw() {
         crashedCarView = !crashedCarView;
       }
     }
+

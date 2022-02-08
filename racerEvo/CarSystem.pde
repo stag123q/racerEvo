@@ -38,12 +38,13 @@ class CarSystem {
 
     if (m == 5000) {
       for (int i = 0; i < CarControllerList.length; i++) {
-        if (CarControllerList[i].bil.pos.x < 300 && CarControllerList[i].bil.pos.x < 400) CarControllerList[i].cornerStraf = 0.1;
+        if (CarControllerList[i].bil.pos.x < 400 && CarControllerList[i].bil.pos.x < 500) CarControllerList[i].cornerStraf = 0.05;
+       }
       }
-    }
 
     if (millis() > time + 15000 && autoUpdate == true) {
       updateGA();
+      m = 0;
       time = millis();
     }
   }
@@ -56,6 +57,7 @@ class CarSystem {
     crossOver();
 
     generation++;
+    
   }
 
   void calcFitness() {
@@ -78,6 +80,7 @@ class CarSystem {
     for (int i = 0; i < CarControllerList.length; i++) {
       totalFitness = CarControllerList[i].fitness + totalFitness;
     }
+    
   }
 
   void crossOver() {
