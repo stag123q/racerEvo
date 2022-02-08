@@ -9,7 +9,7 @@ PImage    trackImage;
 
 void setup() {
   size(1920, 1080);
-  trackImage = loadImage("track.png");
+  trackImage = loadImage("track.JPG");
 }
 
 void draw() {
@@ -21,7 +21,6 @@ void draw() {
 
   carSystem.updateAndDisplay();
   //Vi kan tilføje så den først opdaterer når brugeren vælger eller efter 20 sek eller noget
-
   //TESTKODE: Frastortering af dårlige biler, for hver gang der går 200 frame - f.eks. dem der kører uden for banen
   /* if (frameCount%200==0) {
    println("FJERN DEM DER KØRER UDENFOR BANEN frameCount: " + frameCount);
@@ -32,7 +31,7 @@ void draw() {
    }
    }
    }*/
-  //
+  
   
   drawUI();
 }
@@ -48,12 +47,15 @@ void drawUI(){
   text("Highest fitness: "+carSystem.highestFit, 1300, 350);
   text("SPACE to start new gen", 1300, 250);
   text("BACKSPACE to restart", 1300, 200);
+  
+  //rect(0,0,300,400);
 }
 
 void keyPressed() {
   //Hvis n trykkes, generationen øges med 1
   if (keyCode == 32) {
     carSystem.updateGA();
+    carSystem.m = 0;
   }
   if (keyCode == 8) {
     carSystem = new CarSystem(populationSize);
