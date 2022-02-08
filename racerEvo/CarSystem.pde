@@ -57,7 +57,7 @@ class CarSystem {
     }
 
     for (int i = 0; i < CarControllerList.length; i++) {
-      CarControllerList[i].Fitness(totalWhiteCol, totalLaptime);
+      CarControllerList[i].Fitness();
     }
 
     for (int i = 0; i < CarControllerList.length; i++) {
