@@ -1,7 +1,7 @@
 //populationSize: Hvor mange "controllere" der genereres, controller = bil & hjerne & sensore
 int       populationSize  = 500, genLength = 15;     
 
-Boolean autoUpdate = true, sensorView = false, crashedCarView = false;
+Boolean autoUpdate = false, sensorView = false, crashedCarView = false;
 
 
 //CarSystem: Indholder en population af "controllere" 
@@ -61,7 +61,7 @@ void draw() {
       text("Elapsed time: " +int(millis()/1000)+ " s", 1300, 150);
 
 
-      //rect(0,0,300,400);
+      //rect(600, 600, 100, 200);
 
       text("U to toggle automatic new gen", 1300, 50);
 
@@ -74,7 +74,7 @@ void draw() {
 
     void keyReleased() {
       //Hvis n trykkes, generationen øges med 1
-      if (keyCode == 32) {
+      if (keyCode == 32 && !autoUpdate) {
         carSystem.updateGA();
         carSystem.m = 0;
       }
