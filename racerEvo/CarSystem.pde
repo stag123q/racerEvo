@@ -10,7 +10,7 @@ class CarSystem {
   int totalFitness, ratio, generation = 1, highestFit = 0, m = millis(), time;
 
 
-  float mutationRate = 0.05;
+  float mutationRate = 0.1;
 
   //Laver generationen af car controlers
   CarSystem(int populationSize) {
