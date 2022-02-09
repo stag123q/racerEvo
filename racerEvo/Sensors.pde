@@ -28,24 +28,26 @@ class SensorSystem {
   int     lastTimeInFrames      = 0;
   int     lapTimeInFrames       = 10000;
 
-  void displaySensors() {
-    strokeWeight(0.5);
-    if (frontSensorSignal) { 
-      fill(255, 0, 0);
-      ellipse(anchorPos.x+sensorVectorFront.x, anchorPos.y+sensorVectorFront.y, 8, 8);
-    }
-    if (leftSensorSignal) { 
-      fill(255, 0, 0);
-      ellipse( anchorPos.x+sensorVectorLeft.x, anchorPos.y+sensorVectorLeft.y, 8, 8);
-    }
-    if (rightSensorSignal) { 
-      fill(255, 0, 0);
-      ellipse( anchorPos.x+sensorVectorRight.x, anchorPos.y+sensorVectorRight.y, 8, 8);
-    }
-    line(anchorPos.x, anchorPos.y, anchorPos.x+sensorVectorFront.x, anchorPos.y+sensorVectorFront.y);
-    line(anchorPos.x, anchorPos.y, anchorPos.x+sensorVectorLeft.x, anchorPos.y+sensorVectorLeft.y);
-    line(anchorPos.x, anchorPos.y, anchorPos.x+sensorVectorRight.x, anchorPos.y+sensorVectorRight.y);
+  void displaySensors(Boolean view) {
 
+    if (view) {
+      strokeWeight(0.5);
+      if (frontSensorSignal) { 
+        fill(255, 0, 0);
+        ellipse(anchorPos.x+sensorVectorFront.x, anchorPos.y+sensorVectorFront.y, 8, 8);
+      }
+      if (leftSensorSignal) { 
+        fill(255, 0, 0);
+        ellipse( anchorPos.x+sensorVectorLeft.x, anchorPos.y+sensorVectorLeft.y, 8, 8);
+      }
+      if (rightSensorSignal) { 
+        fill(255, 0, 0);
+        ellipse( anchorPos.x+sensorVectorRight.x, anchorPos.y+sensorVectorRight.y, 8, 8);
+      }
+      line(anchorPos.x, anchorPos.y, anchorPos.x+sensorVectorFront.x, anchorPos.y+sensorVectorFront.y);
+      line(anchorPos.x, anchorPos.y, anchorPos.x+sensorVectorLeft.x, anchorPos.y+sensorVectorLeft.y);
+      line(anchorPos.x, anchorPos.y, anchorPos.x+sensorVectorRight.x, anchorPos.y+sensorVectorRight.y);
+    }
     strokeWeight(2);
     if (whiteSensorFrameCount>0) {
       fill(whiteSensorFrameCount*10, 0, 0);

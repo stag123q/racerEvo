@@ -63,7 +63,7 @@ void draw() {
 
       //rect(0,0,300,400);
 
-      text("U to enable automatic new gen", 1300, 50);
+      text("U to toggle automatic new gen", 1300, 50);
 
       if (autoUpdate) {
         text("Automatic generations: Every "+genLength+"s", 1300, 100);
@@ -91,4 +91,3 @@ void draw() {
         crashedCarView = !crashedCarView;
       }
     }
-

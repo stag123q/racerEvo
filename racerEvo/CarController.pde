@@ -27,7 +27,7 @@ class CarController {
   void display() {
     bil.displayCar();
 
-    if (sensorView) sensorSystem.displaySensors();
+    sensorSystem.displaySensors(sensorView);
   }
 
 
